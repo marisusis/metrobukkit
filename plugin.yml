@@ -1,4 +1,7 @@
-name: Chat
-main: net.spacegeek224.chatplugin.ChatPlugin
-version: 1.0
+name: Metro
+main: net.spacegeek224.metrobukkit
+version: 0.0.1
 commands:
+  goto:
+    description: GoTo
+    usage: /goto <place>
