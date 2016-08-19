@@ -1,5 +1,5 @@
 name: Metro
-main: net.spacegeek224.metrobukkit
+main: net.spacegeek224.metrobukkit.MetroPlugin
 version: 0.0.1
 commands:
   goto:
