@@ -1,0 +1,4 @@
+name: Chat
+main: net.spacegeek224.chatplugin.ChatPlugin
+version: 1.0
+commands:
