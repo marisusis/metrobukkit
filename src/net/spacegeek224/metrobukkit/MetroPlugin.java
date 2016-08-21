@@ -18,6 +18,7 @@ public class MetroPlugin extends JavaPlugin {
 	@Override
 	public void onEnable() {
 		// this.saveDefaultConfig();
+
 		if (!getDataFolder().exists()) {
 			getServer().getLogger().log(Level.WARNING , "Folder does not exist");
 			getDataFolder().mkdir();
