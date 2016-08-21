@@ -31,7 +31,7 @@ public class CommandGoTo implements CommandExecutor {
 		if (sender instanceof Player) {
 			Player player = (Player) sender;
 			Map<String, Object> locations = config.getConfigurationSection("goto").getValues(true);
-			ConfigurationSection s = (ConfigurationSection)locations.get("location1");
+			ConfigurationSection s = (ConfigurationSection)locations.get(args[0]);
 			
 			String toWorld = s.getString("world");
 			String toX = s.getString("x");
@@ -46,7 +46,7 @@ public class CommandGoTo implements CommandExecutor {
 			// Here we need to give items to our player
 		} else {
 			Map<String, Object> locations = config.getConfigurationSection("goto").getValues(true);
-			ConfigurationSection s = (ConfigurationSection)locations.get("location1");
+			ConfigurationSection s = (ConfigurationSection)locations.get(args[0]);
 			
 			String toWorld = s.getString("world");
 			String toX = s.getString("x");
