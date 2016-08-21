@@ -1,0 +1,6 @@
+goto:
+  spawn:
+    world: world
+    x: 92
+    y: 74
+    z: 253
