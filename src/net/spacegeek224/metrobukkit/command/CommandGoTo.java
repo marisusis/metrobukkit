@@ -15,6 +15,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerTeleportEvent.TeleportCause;
 
@@ -30,19 +31,7 @@ public class CommandGoTo implements CommandExecutor {
 	public CommandGoTo(MetroPlugin p) {
 
 		this.p = p;
-		FileConfiguration config;
-		try {
-			config.load(new File(p.getDataFolder(),"goto.yml"));
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InvalidConfigurationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		FileConfiguration config = YamlConfiguration.loadConfiguration(new File(p.getDataFolder(),"goto.yml"));
 		locations = config.getConfigurationSection("locations").getValues(true);
 	}
 
