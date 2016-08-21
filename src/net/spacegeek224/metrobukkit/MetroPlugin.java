@@ -15,26 +15,31 @@ import net.spacegeek224.metrobukkit.command.CommandGoTo;
 
 public class MetroPlugin extends JavaPlugin {
 	// Fired when plugin is first enabled
+
+	public String[] configs = { "config.yml", "goto.yml" };
+
 	@Override
 	public void onEnable() {
 		// this.saveDefaultConfig();
 
 		if (!getDataFolder().exists()) {
-			getServer().getLogger().log(Level.WARNING , "Folder does not exist");
+			getServer().getLogger().log(Level.WARNING, "Folder does not exist");
 			getDataFolder().mkdir();
 		}
-		File configFile = new File(getDataFolder(), "config.yml");
-		if (!configFile.exists()) {
-			try {
-				configFile.createNewFile();
-				getServer().getLogger().log(Level.WARNING ,"Creating file");
-				try (InputStream is = getResource("config.yml");
-						OutputStream os = new FileOutputStream(configFile)) {
-					ByteStreams.copy(is, os);
+		for (String name : configs) {
+			File configFile = new File(getDataFolder(), name);
+			if (!configFile.exists()) {
+				try {
+					configFile.createNewFile();
+					getServer().getLogger().log(Level.WARNING, "Creating file: "+name);
+					try (InputStream is = getResource(name);
+							OutputStream os = new FileOutputStream(configFile)) {
+						ByteStreams.copy(is, os);
+					}
+				} catch (IOException e) {
+					getServer().getLogger().log(Level.SEVERE, "Can't create config file");
+					throw new RuntimeException("Unable to create configuration file", e);
 				}
-			} catch (IOException e) {
-				getServer().getLogger().log(Level.SEVERE ,"Can't create config file");
-				throw new RuntimeException("Unable to create configuration file", e);
 			}
 		}
 		registerCommands();
