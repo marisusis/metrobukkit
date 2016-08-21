@@ -23,7 +23,7 @@ public class CommandGoTo implements CommandExecutor {
 			
 			// Here we need to give items to our player
 		} else {
-			sender.sendMessage("Sending you to..."+config.getConfigurationSection("goto.location1").getCurrentPath());
+			sender.sendMessage("Sending you to..."+config.getList("goto.location1"));
 		}
 		// If the player (or console) uses our command correct, we can return
 		// true
