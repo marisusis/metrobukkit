@@ -35,7 +35,7 @@ public class CommandGoTo implements CommandExecutor {
 				Map<String, Object> locations = config.getConfigurationSection("goto").getValues(true);
 				ConfigurationSection s = (ConfigurationSection) locations.get(args[0]);
 
-				String toName = s.getString("name");
+				String toName = s.getName();
 				String toWorld = s.getString("world");
 				String toX = s.getString("x");
 				String toY = s.getString("y");
