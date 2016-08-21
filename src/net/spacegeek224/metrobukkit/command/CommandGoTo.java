@@ -15,13 +15,9 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 import org.bukkit.configuration.file.YamlConfiguration;
-=======
->>>>>>> 7369496d9f4085f30d002541b2f1f919a1c86462
-=======
->>>>>>> 7369496d9f4085f30d002541b2f1f919a1c86462
+
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerTeleportEvent.TeleportCause;
 
@@ -37,29 +33,8 @@ public class CommandGoTo implements CommandExecutor {
 	public CommandGoTo(MetroPlugin p) {
 
 		this.p = p;
-<<<<<<< HEAD
-<<<<<<< HEAD
 		FileConfiguration config = YamlConfiguration.loadConfiguration(new File(p.getDataFolder(),"goto.yml"));
-=======
-=======
->>>>>>> 7369496d9f4085f30d002541b2f1f919a1c86462
-		FileConfiguration config;
-		try {
-			config.load(new File(p.getDataFolder(),"goto.yml"));
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InvalidConfigurationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-<<<<<<< HEAD
->>>>>>> 7369496d9f4085f30d002541b2f1f919a1c86462
-=======
->>>>>>> 7369496d9f4085f30d002541b2f1f919a1c86462
+
 		locations = config.getConfigurationSection("locations").getValues(true);
 	}
 
