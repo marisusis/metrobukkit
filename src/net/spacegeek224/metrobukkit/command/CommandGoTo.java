@@ -42,7 +42,7 @@ public class CommandGoTo implements CommandExecutor {
 
 				Location toLocation = new Location(p.getServer().getWorld(toWorld), s.getInt(toX), s.getInt(toY),
 						s.getInt(toZ));
-				player.sendMessage("Sending you to: " + toWorld + " - " + "(" + toX + "," + toY + "," + toZ + ")...");
+				player.sendMessage(new StringBuilder(ChatColor.GREEN.toString()).append("Sending you to: " + toWorld + " - " + "(" + toX + "," + toY + "," + toZ + ")...").toString());
 				player.teleport(toLocation);
 				// player.teleport(toLocation,TeleportCause.UNKNOWN);
 			} else {
