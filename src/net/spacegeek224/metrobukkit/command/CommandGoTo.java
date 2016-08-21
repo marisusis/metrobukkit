@@ -45,16 +45,7 @@ public class CommandGoTo implements CommandExecutor {
 			
 			// Here we need to give items to our player
 		} else {
-			Map<String, Object> locations = config.getConfigurationSection("goto").getValues(true);
-			ConfigurationSection s = (ConfigurationSection)locations.get(args[0]);
 			
-			String toWorld = s.getString("world");
-			String toX = s.getString("x");
-			String toY = s.getString("y");
-			String toZ = s.getString("z");
-			
-			Location location = new Location(p.getServer().getWorld(toWorld), s.getInt(toX), s.getInt(toY), s.getInt(toZ));
-			sender.sendMessage("Sending you to: "+ toWorld+" - "+"("+toX+","+toY+","+toZ+")...");
 		}
 		// If the player (or console) uses our command correct, we can return
 		// true
