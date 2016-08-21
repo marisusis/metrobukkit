@@ -37,21 +37,17 @@ public class CommandGoTo implements CommandExecutor {
 
 				String toName = s.getName();
 				String toWorld = s.getString("world");
-				String toX = s.getString("x");
-				String toY = s.getString("y");
-				String toZ = s.getString("z");
+				int toX = s.getInt("x");
+				int toY = s.getInt("y");
+				int toZ = s.getInt("z");
 
-				Location toLocation = new Location(p.getServer().getWorld(toWorld), s.getInt(toX), s.getInt(toY),
-						s.getInt(toZ));
+				Location toLocation = new Location(p.getServer().getWorld(toWorld), toX, toY, toZ);
 				// player.sendMessage(new
 				// StringBuilder(ChatColor.GREEN.toString()).append("Sending you
 				// to: " + toWorld + " - " + "(" + toX + "," + toY + "," + toZ +
 				// ")...").toString());
-				player.sendMessage(new StringBuilder(ChatColor.GREEN.toString())
-						.append("Sending you to ")
-						.append(ChatColor.YELLOW.toString())
-						.append(toName)
-						.append(ChatColor.GREEN.toString())
+				player.sendMessage(new StringBuilder(ChatColor.GREEN.toString()).append("Sending you to ")
+						.append(ChatColor.YELLOW.toString()).append(toName).append(ChatColor.GREEN.toString())
 						.append("...").toString());
 				player.teleport(toLocation);
 				// player.teleport(toLocation,TeleportCause.UNKNOWN);
