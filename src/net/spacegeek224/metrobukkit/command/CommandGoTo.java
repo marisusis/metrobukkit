@@ -35,6 +35,7 @@ public class CommandGoTo implements CommandExecutor {
 				Map<String, Object> locations = config.getConfigurationSection("goto").getValues(true);
 				ConfigurationSection s = (ConfigurationSection) locations.get(args[0]);
 
+				String toName = s.getString("name");
 				String toWorld = s.getString("world");
 				String toX = s.getString("x");
 				String toY = s.getString("y");
@@ -42,7 +43,16 @@ public class CommandGoTo implements CommandExecutor {
 
 				Location toLocation = new Location(p.getServer().getWorld(toWorld), s.getInt(toX), s.getInt(toY),
 						s.getInt(toZ));
-				player.sendMessage(new StringBuilder(ChatColor.GREEN.toString()).append("Sending you to: " + toWorld + " - " + "(" + toX + "," + toY + "," + toZ + ")...").toString());
+				// player.sendMessage(new
+				// StringBuilder(ChatColor.GREEN.toString()).append("Sending you
+				// to: " + toWorld + " - " + "(" + toX + "," + toY + "," + toZ +
+				// ")...").toString());
+				player.sendMessage(new StringBuilder(ChatColor.GREEN.toString())
+						.append("Sending you to ")
+						.append(ChatColor.YELLOW.toString())
+						.append(toName)
+						.append(ChatColor.GREEN.toString())
+						.append("...").toString());
 				player.teleport(toLocation);
 				// player.teleport(toLocation,TeleportCause.UNKNOWN);
 			} else {
