@@ -35,14 +35,13 @@ public class CommandLocation {
 					case "set":
 						break;
 					default:
-						player.sendMessage(new MessageBuilder().red("Unknown command option ").yellow(args[0].substring(1)).red(".").s());
-
+						player.sendMessage(new MessageBuilder().red("Unknown command option ").yellow(args[0].substring(1)).red(". Do ").yellow("/help ").red("for help.").s());
 					}
 				} else {
-
+					
 				}
 			} else {
-				return false;
+				return true;
 			}
 
 		} else {
