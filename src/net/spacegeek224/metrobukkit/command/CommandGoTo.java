@@ -34,7 +34,7 @@ public class CommandGoTo implements CommandExecutor {
 	public CommandGoTo(MetroPlugin p) {
 
 		this.p = p;
-		config = YamlConfiguration.loadConfiguration(new File(p.getDataFolder(), "goto.yml"));
+		config = YamlConfiguration.loadConfiguration(new File(p.getDataFolder(), "locations.yml"));
 
 		locations = config.getConfigurationSection("locations").getValues(true);
 	}

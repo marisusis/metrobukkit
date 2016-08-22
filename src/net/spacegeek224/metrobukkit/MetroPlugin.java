@@ -17,7 +17,7 @@ import net.spacegeek224.metrobukkit.command.CommandLocation;
 public class MetroPlugin extends JavaPlugin {
 	// Fired when plugin is first enabled
 
-	public String[] configs = { "config.yml", "goto.yml" };
+	public String[] configs = { "config.yml", "locations.yml" };
 
 	@Override
 	public void onEnable() {
