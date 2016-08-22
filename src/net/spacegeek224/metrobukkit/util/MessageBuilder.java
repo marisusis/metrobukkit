@@ -7,7 +7,7 @@ public class MessageBuilder {
 	private StringBuilder b;
 
 	public MessageBuilder() {
-		this.b = new StringBuilder();
+		this.b = new StringBuilder(ChatColor.RESET.toString());
 		// TODO Auto-generated constructor stub
 	}
 
@@ -59,8 +59,25 @@ public class MessageBuilder {
 		b.append(ChatColor.UNDERLINE.toString());
 	}
 	
+	public void reset() {
+		b.append(ChatColor.RESET.toString());
+	}
+	
+	public void white() {
+		b.append(ChatColor.WHITE.toString());
+	}
+	
+	public void black() {
+		b.append(ChatColor.BLACK.toString());
+	}
+	
 	public void then(String s) {
 		b.append(s);
 	}
+	
+	public String toString() {
+		return b.toString();
+	}
+	
 
 }
