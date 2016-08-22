@@ -91,6 +91,18 @@ public class MessageBuilder {
 		return this;
 	}
 	
+	public MessageBuilder aqua(String s) {
+		b.append(ChatColor.AQUA.toString()).append(s);
+		return this;
+	}
+	
+	public MessageBuilder darkaqua(String s) {
+		b.append(ChatColor.DARK_AQUA.toString()).append(s);
+		return this;
+	}
+	
+	
+	
 	public MessageBuilder then(String s) {
 		b.append(s);
 		return this;

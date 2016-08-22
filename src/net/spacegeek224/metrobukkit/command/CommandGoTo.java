@@ -46,6 +46,7 @@ public class CommandGoTo implements CommandExecutor {
 				if (args[0].startsWith("-")) {
 					switch (args[0].substring(1)) {
 					case "list":
+						player.sendMessage(new MessageBuilder().aqua("List of locations:").s());
 						for (Object o : locations.values()) {
 							if (o instanceof ConfigurationSection) {
 								player.sendMessage(
