@@ -22,6 +22,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerTeleportEvent.TeleportCause;
 
 import net.spacegeek224.metrobukkit.MetroPlugin;
+import net.spacegeek224.metrobukkit.util.MessageBuilder;
 
 public class CommandGoTo implements CommandExecutor {
 
@@ -58,21 +59,18 @@ public class CommandGoTo implements CommandExecutor {
 					// to: " + toWorld + " - " + "(" + toX + "," + toY + "," +
 					// toZ +
 					// ")...").toString());
-					player.sendMessage(new StringBuilder(ChatColor.GREEN.toString()).append("Sending you to ")
-							.append(ChatColor.YELLOW.toString()).append(toName).append(ChatColor.GREEN.toString())
-							.append("...").toString());
+					player.sendMessage(new MessageBuilder().green("Sending you to ").yellow(toName).green("...").s());
 					player.teleport(toLocation);
 					// player.teleport(toLocation,TeleportCause.UNKNOWN);
 				} else {
-					player.sendMessage(new StringBuilder(ChatColor.RED.toString()).append("I can't seem to find ").append(ChatColor.YELLOW.toString()).append(args[0]).append(ChatColor.RED.toString()).append(".").toString());
+					player.sendMessage(new MessageBuilder().red("I'm not sure where ").yellow(args[0]).red(" is.").s());
 				}
 			} else {
 				return false;
 			}
 
 		} else {
-			sender.sendMessage(
-					new StringBuilder(ChatColor.GOLD.toString()).append("Only players can do this!").toString());
+			sender.sendMessage(new MessageBuilder().red("Only players can do this!").s());
 		}
 		// If the player (or console) uses our command correct, we can return
 		// true

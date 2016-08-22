@@ -16,71 +16,87 @@ public class MessageBuilder {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void red(String s) {
+	public MessageBuilder red(String s) {
 		b.append(ChatColor.RED.toString()).append(s);
+		return this;
 	}
 	
-	public void darkred(String s) {
+	public MessageBuilder darkred(String s) {
 		b.append(ChatColor.DARK_RED.toString()).append(s);
+		return this;
 	}
 	
-	public void gold(String s) {
+	public MessageBuilder gold(String s) {
 		b.append(ChatColor.GOLD.toString()).append(s);
+		return this;
 	}
 	
-	public void green(String s) {
+	public MessageBuilder green(String s) {
 		b.append(ChatColor.GREEN.toString()).append(s);
+		return this;
 	}
 	
-	public void darkgreen(String s) {
+	public MessageBuilder darkgreen(String s) {
 		b.append(ChatColor.DARK_GREEN.toString()).append(s);
+		return this;
 	}
 	
-	public void yellow(String s) {
+	public MessageBuilder yellow(String s) {
 		b.append(ChatColor.YELLOW.toString()).append(s);
+		return this;
 	}
 	
-	public void blue(String s) {
+	public MessageBuilder blue(String s) {
 		b.append(ChatColor.BLUE.toString()).append(s);
+		return this;
 	}
 	
-	public void darkblue(String s) {
+	public MessageBuilder darkblue(String s) {
 		b.append(ChatColor.DARK_BLUE.toString()).append(s);
+		return this;
 	}
 	
-	public void darkpurple(String s) {
+	public MessageBuilder darkpurple(String s) {
 		b.append(ChatColor.DARK_PURPLE.toString()).append(s);
+		return this;
 	}
 	
-	public void lightpurple(String s) {
+	public MessageBuilder lightpurple(String s) {
 		b.append(ChatColor.LIGHT_PURPLE.toString()).append(s);
+		return this;
 	}
 	
-	public void magic(String s) {
+	public MessageBuilder magic(String s) {
 		b.append(ChatColor.MAGIC.toString()).append(s);
+		return this;
 	}
 	
-	public void underline(String s) {
+	public MessageBuilder underline(String s) {
 		b.append(ChatColor.UNDERLINE.toString()).append(s);
+		return this;
 	}
 	
-	public void reset(String s) {
+	public MessageBuilder reset(String s) {
 		b.append(ChatColor.RESET.toString()).append(s);
+		return this;
 	}
 	
-	public void white(String s) {
+	public MessageBuilder white(String s) {
 		b.append(ChatColor.WHITE.toString()).append(s);
+		return this;
 	}
 	
-	public void black(String s) {
+	public MessageBuilder black(String s) {
 		b.append(ChatColor.BLACK.toString()).append(s);
+		return this;
 	}
 	
-	public void then(String s) {
+	public MessageBuilder then(String s) {
 		b.append(s);
+		return this;
 	}
 	
-	public String toString() {
+	public String s() {
 		return b.toString();
 	}
 	
