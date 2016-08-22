@@ -3,5 +3,11 @@ main: net.spacegeek224.metrobukkit.MetroPlugin
 version: 0.0.1
 commands:
   goto:
-    description: GoTo
+    description: Command to go places
     usage: /goto <place>
+  location:
+    description: Command for Locations
+    usage: /location [options]
+  loc:
+    description: Command for Locations
+    usage: /location [options]
