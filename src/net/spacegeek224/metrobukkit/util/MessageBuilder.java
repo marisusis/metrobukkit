@@ -10,65 +10,70 @@ public class MessageBuilder {
 		this.b = new StringBuilder(ChatColor.RESET.toString());
 		// TODO Auto-generated constructor stub
 	}
+	
+	public MessageBuilder(String s) {
+		this.b = new StringBuilder(ChatColor.RESET.toString()).append(s);
+		// TODO Auto-generated constructor stub
+	}
 
-	public void red() {
-		b.append(ChatColor.RED.toString());
+	public void red(String s) {
+		b.append(ChatColor.RED.toString()).append(s);
 	}
 	
-	public void darkred() {
-		b.append(ChatColor.DARK_RED.toString());
+	public void darkred(String s) {
+		b.append(ChatColor.DARK_RED.toString()).append(s);
 	}
 	
-	public void gold() {
-		b.append(ChatColor.GOLD.toString());
+	public void gold(String s) {
+		b.append(ChatColor.GOLD.toString()).append(s);
 	}
 	
-	public void green() {
-		b.append(ChatColor.GREEN.toString());
+	public void green(String s) {
+		b.append(ChatColor.GREEN.toString()).append(s);
 	}
 	
-	public void darkgreen() {
-		b.append(ChatColor.DARK_GREEN.toString());
+	public void darkgreen(String s) {
+		b.append(ChatColor.DARK_GREEN.toString()).append(s);
 	}
 	
-	public void yellow() {
-		b.append(ChatColor.YELLOW.toString());
+	public void yellow(String s) {
+		b.append(ChatColor.YELLOW.toString()).append(s);
 	}
 	
-	public void blue() {
-		b.append(ChatColor.BLUE.toString());
+	public void blue(String s) {
+		b.append(ChatColor.BLUE.toString()).append(s);
 	}
 	
-	public void darkblue() {
-		b.append(ChatColor.DARK_BLUE.toString());
+	public void darkblue(String s) {
+		b.append(ChatColor.DARK_BLUE.toString()).append(s);
 	}
 	
-	public void darkpurple() {
-		b.append(ChatColor.DARK_PURPLE.toString());
+	public void darkpurple(String s) {
+		b.append(ChatColor.DARK_PURPLE.toString()).append(s);
 	}
 	
-	public void lightpurple() {
-		b.append(ChatColor.LIGHT_PURPLE.toString());
+	public void lightpurple(String s) {
+		b.append(ChatColor.LIGHT_PURPLE.toString()).append(s);
 	}
 	
-	public void magic() {
-		b.append(ChatColor.MAGIC.toString());
+	public void magic(String s) {
+		b.append(ChatColor.MAGIC.toString()).append(s);
 	}
 	
-	public void underline() {
-		b.append(ChatColor.UNDERLINE.toString());
+	public void underline(String s) {
+		b.append(ChatColor.UNDERLINE.toString()).append(s);
 	}
 	
-	public void reset() {
-		b.append(ChatColor.RESET.toString());
+	public void reset(String s) {
+		b.append(ChatColor.RESET.toString()).append(s);
 	}
 	
-	public void white() {
-		b.append(ChatColor.WHITE.toString());
+	public void white(String s) {
+		b.append(ChatColor.WHITE.toString()).append(s);
 	}
 	
-	public void black() {
-		b.append(ChatColor.BLACK.toString());
+	public void black(String s) {
+		b.append(ChatColor.BLACK.toString()).append(s);
 	}
 	
 	public void then(String s) {
