@@ -34,7 +34,7 @@ public class CommandGoTo implements CommandExecutor {
 	public CommandGoTo(MetroPlugin p) {
 
 		this.p = p;
-		FileConfiguration config = YamlConfiguration.loadConfiguration(new File(p.getDataFolder(),"goto.yml"));
+		config = YamlConfiguration.loadConfiguration(new File(p.getDataFolder(), "goto.yml"));
 
 		locations = config.getConfigurationSection("locations").getValues(true);
 	}
@@ -43,27 +43,42 @@ public class CommandGoTo implements CommandExecutor {
 		if (sender instanceof Player) {
 			Player player = (Player) sender;
 			if (args.length == 1) {
-				if (locations.containsKey(args[0])) {
-					ConfigurationSection s = (ConfigurationSection) locations.get(args[0]);
-
-					String toName = s.getName();
-					String toWorld = s.getString("world");
-					int toX = s.getInt("x");
-					int toY = s.getInt("y");
-					int toZ = s.getInt("z");
-
-					Location toLocation = new Location(p.getServer().getWorld(toWorld), toX, toY, toZ);
-					// player.sendMessage(new
-					// StringBuilder(ChatColor.GREEN.toString()).append("Sending
-					// you
-					// to: " + toWorld + " - " + "(" + toX + "," + toY + "," +
-					// toZ +
-					// ")...").toString());
-					player.sendMessage(new MessageBuilder().green("Sending you to ").yellow(toName).green("...").s());
-					player.teleport(toLocation);
-					// player.teleport(toLocation,TeleportCause.UNKNOWN);
+				if (args[0].startsWith("-")) {
+					switch (args[0].substring(1)) {
+					case "list":
+						for (Object o : locations.values()) {
+							if (o instanceof ConfigurationSection) {
+								player.sendMessage(
+										new MessageBuilder().yellow("- " + (((ConfigurationSection) o).getName())).s());
+							}
+						}
+						break;
+					}
 				} else {
-					player.sendMessage(new MessageBuilder().red("I'm not sure where ").yellow(args[0]).red(" is.").s());
+					if (locations.containsKey(args[0])) {
+						ConfigurationSection s = (ConfigurationSection) locations.get(args[0]);
+						String toName = s.getName();
+						String toWorld = s.getString("world");
+						int toX = s.getInt("x");
+						int toY = s.getInt("y");
+						int toZ = s.getInt("z");
+
+						Location toLocation = new Location(p.getServer().getWorld(toWorld), toX, toY, toZ);
+						// player.sendMessage(new
+						// StringBuilder(ChatColor.GREEN.toString()).append("Sending
+						// you
+						// to: " + toWorld + " - " + "(" + toX + "," + toY + ","
+						// +
+						// toZ +
+						// ")...").toString());
+						player.sendMessage(
+								new MessageBuilder().green("Sending you to ").yellow(toName).green("...").s());
+						player.teleport(toLocation);
+						// player.teleport(toLocation,TeleportCause.UNKNOWN);
+					} else {
+						player.sendMessage(
+								new MessageBuilder().red("I'm not sure where ").yellow(args[0]).red(" is.").s());
+					}
 				}
 			} else {
 				return false;
