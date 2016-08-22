@@ -12,6 +12,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import com.google.common.io.ByteStreams;
 
 import net.spacegeek224.metrobukkit.command.CommandGoTo;
+import net.spacegeek224.metrobukkit.command.CommandLocation;
 
 public class MetroPlugin extends JavaPlugin {
 	// Fired when plugin is first enabled
@@ -55,5 +56,7 @@ public class MetroPlugin extends JavaPlugin {
 
 	public void registerCommands() {
 		this.getCommand("goto").setExecutor(new CommandGoTo(this));
+		this.getCommand("loc").setExecutor(new CommandLocation(this));
+		this.getCommand("location").setExecutor(new CommandLocation(this));
 	}
 }

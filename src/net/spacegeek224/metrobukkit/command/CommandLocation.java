@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.bukkit.World;
 import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -13,7 +14,7 @@ import org.bukkit.entity.Player;
 import net.spacegeek224.metrobukkit.MetroPlugin;
 import net.spacegeek224.metrobukkit.util.MessageBuilder;
 
-public class CommandLocation {
+public class CommandLocation implements CommandExecutor {
 
 	public FileConfiguration config;
 	public World w;
