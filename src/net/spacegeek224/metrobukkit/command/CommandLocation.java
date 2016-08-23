@@ -36,55 +36,51 @@ public class CommandLocation implements CommandExecutor {
 		if (sender instanceof Player) {
 			Player player = (Player) sender;
 			if (args.length >= 1) {
-				if (args[0].startsWith("-")) {
-					switch (args[0].substring(1)) {
-					case "set":
-						if (args.length - 1 == 5) {
+				switch (args[0]) {
+				case "set":
+					if (args.length - 1 == 5) {
 
-							ConfigurationSection c = locations.createSection(args[1]);
+						ConfigurationSection c = locations.createSection(args[1]);
 
-							c.set("world", args[2].replaceAll("~", player.getWorld().getName()));
-							c.set("x", Integer.parseInt(
-									args[3].replaceAll("~", Integer.toString((int) player.getLocation().getX()))));
-							c.set("y", Integer.parseInt(
-									args[4].replaceAll("~", Integer.toString((int) player.getLocation().getY()))));
-							c.set("z", Integer.parseInt(
-									args[5].replaceAll("~", Integer.toString((int) player.getLocation().getZ()))));
+						c.set("world", args[2].replaceAll("~", player.getWorld().getName()));
+						c.set("x", Integer.parseInt(
+								args[3].replaceAll("~", Integer.toString((int) player.getLocation().getX()))));
+						c.set("y", Integer.parseInt(
+								args[4].replaceAll("~", Integer.toString((int) player.getLocation().getY()))));
+						c.set("z", Integer.parseInt(
+								args[5].replaceAll("~", Integer.toString((int) player.getLocation().getZ()))));
 
-						}
-						try {
-							config.save(new File(p.getDataFolder(), "locations.yml"));
-							config.load(new File(p.getDataFolder(), "locations.yml"));
-							locations = config.getConfigurationSection("locations");
-						} catch (IOException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						} catch (InvalidConfigurationException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-						break;
-					case "list":
-						player.sendMessage(new MessageBuilder().aqua("List of locations:").s());
-						for (Object o : config.getConfigurationSection("locations").getValues(true).values()) {
-							if (o instanceof ConfigurationSection) {
-								player.sendMessage(
-										new MessageBuilder().yellow("- " + (((ConfigurationSection) o).getName())).s());
-							}
-						}
-					default:
-						player.sendMessage(new MessageBuilder().red("Unknown command option ")
-								.yellow(args[0].substring(1)).red(". Do ").yellow("/help ").red("for help.").s());
 					}
-				} else {
-
+					try {
+						config.save(new File(p.getDataFolder(), "locations.yml"));
+						config.load(new File(p.getDataFolder(), "locations.yml"));
+						locations = config.getConfigurationSection("locations");
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (InvalidConfigurationException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					break;
+				case "list":
+					player.sendMessage(new MessageBuilder().aqua("List of locations:").s());
+					for (Object o : config.getConfigurationSection("locations").getValues(true).values()) {
+						if (o instanceof ConfigurationSection) {
+							player.sendMessage(
+									new MessageBuilder().yellow("- " + (((ConfigurationSection) o).getName())).s());
+						}
+					}
+				default:
+					player.sendMessage(new MessageBuilder().red("Unknown command function ").yellow(args[0])
+							.red(". Do ").yellow("/loc help ").red("for help.").s());
 				}
 			} else {
-				return true;
-			}
 
+			}
 		} else {
 			sender.sendMessage(new MessageBuilder().red("Only players can do this!").s());
+			return true;
 		}
 		return true;
 	}
