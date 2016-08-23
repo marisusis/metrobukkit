@@ -54,6 +54,22 @@ public class CommandGoTo implements CommandExecutor {
 							}
 						}
 						break;
+					case "rl":
+						player.sendMessage(new MessageBuilder().yellow("Reloading goto locations...").s());
+						try {
+							config.load(new File(p.getDataFolder(), "locations.yml"));
+						} catch (FileNotFoundException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (InvalidConfigurationException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						locations = config.getConfigurationSection("locations").getValues(true);
+						
 					}
 				} else {
 					if (locations.containsKey(args[0])) {
