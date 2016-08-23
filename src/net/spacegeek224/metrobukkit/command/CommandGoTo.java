@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -20,6 +21,9 @@ import org.bukkit.configuration.file.YamlConfiguration;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerTeleportEvent.TeleportCause;
+
+import com.google.common.io.ByteArrayDataOutput;
+import com.google.common.io.ByteStreams;
 
 import net.spacegeek224.metrobukkit.MetroPlugin;
 import net.spacegeek224.metrobukkit.util.MessageBuilder;
@@ -42,7 +46,7 @@ public class CommandGoTo implements CommandExecutor {
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		if (sender instanceof Player) {
 			Player player = (Player) sender;
-			if (args.length == 1) {
+			if (args.length >= 1) {
 				if (args[0].startsWith("-")) {
 					switch (args[0].substring(1)) {
 					case "list":
@@ -69,7 +73,23 @@ public class CommandGoTo implements CommandExecutor {
 							e.printStackTrace();
 						}
 						locations = config.getConfigurationSection("locations").getValues(true);
-						
+						break;
+					case "server":
+						player.sendMessage(
+								new MessageBuilder().red("This function is not available at this time.").s());
+						break;
+					/*
+					 * ByteArrayDataOutput out = ByteStreams.newDataOutput();
+					 * out.writeUTF("BungeeCord"); out.writeUTF("Argument");
+					 * 
+					 * // If you don't care about the player // Player player =
+					 * // Iterables.getFirst(Bukkit.getOnlinePlayers(), null);
+					 * // Else, specify them Player plr =
+					 * Bukkit.getPlayerExact("spacegeek224");
+					 * 
+					 * plr.sendPluginMessage(p, "BungeeCord",
+					 * out.toByteArray());
+					 */
 					}
 				} else {
 					if (locations.containsKey(args[0])) {
