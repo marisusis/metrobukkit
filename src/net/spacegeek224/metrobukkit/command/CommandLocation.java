@@ -64,6 +64,14 @@ public class CommandLocation implements CommandExecutor {
 							e.printStackTrace();
 						}
 						break;
+					case "list":
+						player.sendMessage(new MessageBuilder().aqua("List of locations:").s());
+						for (Object o : config.getConfigurationSection("locations").getValues(true).values()) {
+							if (o instanceof ConfigurationSection) {
+								player.sendMessage(
+										new MessageBuilder().yellow("- " + (((ConfigurationSection) o).getName())).s());
+							}
+						}
 					default:
 						player.sendMessage(new MessageBuilder().red("Unknown command option ")
 								.yellow(args[0].substring(1)).red(". Do ").yellow("/help ").red("for help.").s());
