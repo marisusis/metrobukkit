@@ -1,6 +1,7 @@
 package net.spacegeek224.metrobukkit.command;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Map;
 
@@ -9,6 +10,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
@@ -37,27 +39,37 @@ public class CommandLocation implements CommandExecutor {
 				if (args[0].startsWith("-")) {
 					switch (args[0].substring(1)) {
 					case "set":
-						if (args.length-1 == 5) {
-							
-							ConfigurationSection c = locations.createSection(args[2]);
-							c.set("world",args[3]);
-							c.set("x",args[4]);
-							c.set("y",args[5]);
-							c.set("z",args[6]);
-							
+						if (args.length - 1 == 5) {
+
+							ConfigurationSection c = locations.createSection(args[1]);
+
+							c.set("world", args[2].replaceAll("~", player.getWorld().getName()));
+							c.set("x", Integer.parseInt(
+									args[3].replaceAll("~", Integer.toString((int) player.getLocation().getX()))));
+							c.set("y", Integer.parseInt(
+									args[4].replaceAll("~", Integer.toString((int) player.getLocation().getY()))));
+							c.set("z", Integer.parseInt(
+									args[5].replaceAll("~", Integer.toString((int) player.getLocation().getZ()))));
+
 						}
 						try {
 							config.save(new File(p.getDataFolder(), "locations.yml"));
+							config.load(new File(p.getDataFolder(), "locations.yml"));
+							locations = config.getConfigurationSection("locations");
 						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (InvalidConfigurationException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 						break;
 					default:
-						player.sendMessage(new MessageBuilder().red("Unknown command option ").yellow(args[0].substring(1)).red(". Do ").yellow("/help ").red("for help.").s());
+						player.sendMessage(new MessageBuilder().red("Unknown command option ")
+								.yellow(args[0].substring(1)).red(". Do ").yellow("/help ").red("for help.").s());
 					}
 				} else {
-					
+
 				}
 			} else {
 				return true;

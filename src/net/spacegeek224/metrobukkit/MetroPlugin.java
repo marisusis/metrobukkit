@@ -5,8 +5,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Map;
 import java.util.logging.Level;
 
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.google.common.io.ByteStreams;
@@ -17,7 +20,9 @@ import net.spacegeek224.metrobukkit.command.CommandLocation;
 public class MetroPlugin extends JavaPlugin {
 	// Fired when plugin is first enabled
 
-	public String[] configs = { "config.yml", "locations.yml" };
+	public String[] configlist = { "config.yml", "locations.yml" };
+	
+	public Map<String,FileConfiguration> configs;
 
 	@Override
 	public void onEnable() {
@@ -27,7 +32,7 @@ public class MetroPlugin extends JavaPlugin {
 			getServer().getLogger().log(Level.WARNING, "Folder does not exist");
 			getDataFolder().mkdir();
 		}
-		for (String name : configs) {
+		for (String name : configlist) {
 			File configFile = new File(getDataFolder(), name);
 			if (!configFile.exists()) {
 				try {
@@ -42,6 +47,7 @@ public class MetroPlugin extends JavaPlugin {
 					throw new RuntimeException("Unable to create configuration file", e);
 				}
 			}
+//			configs.put(name, YamlConfiguration.loadConfiguration(new File(getDataFolder(), name)));
 		}
 		registerCommands();
 		getServer().getLogger().info("MetroPlugin is up and running!");
